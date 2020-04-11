@@ -32,7 +32,8 @@ grad_buffer = { k : np.zeros_like(v) for k,v in model.iteritems() } # update buf
 rmsprop_cache = { k : np.zeros_like(v) for k,v in model.iteritems() } # rmsprop memory
 
 def sigmoid(x):
-  return drs.append(reward) # 
+  return 1.0 / (1.0 + np.exp(-x))# sigmoid "squashing" function to interval[0, 1]
+  
 def prepro(I):
   """ prepro 210x160x3 uint8 frame into 6000 (75x80) 1D float vector """
   I = I[35:185] # crop - remove 35px from start & 25px from end of image in x, to reduce redundant parts of image (i.e. after ball passes paddle)
